@@ -18,7 +18,7 @@ public class IntContainer{
         return last;
     }
 
-    public void addElem(int e){
+    public void addElem(Integer e){
         if (last >= n) {
             n += 10;
             int[] elem_copy = elem.clone();
