@@ -57,8 +57,8 @@ public class IntContainer{
         intCont.addElem(3);
         intCont.addElem(4);
         intCont.addElem(5);
-        intCont.addElem(6);//!!!
-        intCont.addElem(7);//!!!
+        intCont.addElem(6);
+        intCont.addElem(7);
 
         intCont.removeElem(2);
 
