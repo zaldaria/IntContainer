@@ -10,7 +10,7 @@ public class IntContainerTest {
 
     @BeforeEach
     void setUp() {
-        container = new IntContainer(3); // Начальная емкость 3
+        container = new IntContainer(3);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class IntContainerTest {
         container.addElem(10);
         container.addElem(20);
         container.addElem(30);
-        container.addElem(40); // Должно вызвать увеличение массива
+        container.addElem(40);
         assertEquals(4, container.len());
     }
 
@@ -54,7 +54,7 @@ public class IntContainerTest {
     void testRemoveNonExistingElement() {
         container.addElem(10);
         container.addElem(20);
-        container.removeElem(30); // Нет такого элемента
+        container.removeElem(30);
         assertEquals(2, container.len());
     }
 

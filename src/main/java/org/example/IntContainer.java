@@ -29,6 +29,7 @@ public class IntContainer{
         elem[last] = e;
         last += 1;
     }
+
     public int getElem(int n){
         return elem[n];
     }
