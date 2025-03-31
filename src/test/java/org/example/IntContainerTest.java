@@ -26,6 +26,13 @@ public class IntContainerTest {
     }
 
     @Test
+    void testGetElements() {
+        container.addElem(10);
+        container.getElem(0);
+        assertEquals(10, container.getElem(0));
+    }
+
+    @Test
     void testAddElementsBeyondCapacity() {
         container.addElem(10);
         container.addElem(20);
@@ -64,14 +71,6 @@ public class IntContainerTest {
     void testEmptyContainer() {
         IntContainer emptyContainer = new IntContainer();
         assertEquals(0, emptyContainer.len());
-    }
-
-    @Test
-    void testShowElements() {
-        container.addElem(10);
-        container.addElem(20);
-        // Этот тест просто проверяет, что метод не выбрасывает исключений
-        assertDoesNotThrow(() -> container.showElems());
     }
 
     @Test

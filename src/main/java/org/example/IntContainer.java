@@ -23,14 +23,14 @@ public class IntContainer{
             n += 10;
             int[] elem_copy = elem.clone();
             elem = new int[n];
-            for (int i = 0; i < n - 10; i++) {
-                elem[i] = elem_copy[i];
-            }
+            if (n - 10 >= 0) System.arraycopy(elem_copy, 0, elem, 0, n - 10);
             System.out.println("Resize to " + elem.length);
         }
         elem[last] = e;
-        last+=1;
-
+        last += 1;
+    }
+    public int getElem(int n){
+        return elem[n];
     }
 
     public void removeElem(int e){
@@ -46,8 +46,9 @@ public class IntContainer{
 
     public void showElems(){
         for (int i = 0; i < last; ++i) {
-            System.out.println(elem[i]);
+            System.out.print(elem[i] + " ");
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -61,6 +62,8 @@ public class IntContainer{
         intCont.addElem(7);
 
         intCont.removeElem(2);
+
+        System.out.println("First element is : " + intCont.getElem(0));
 
         intCont.showElems();
         System.out.println("Number of elements 1: " + intCont.len());
