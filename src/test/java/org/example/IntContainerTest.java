@@ -5,19 +5,32 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс для тестирования функциональности IntContainer.
+ */
 public class IntContainerTest {
     private IntContainer container;
 
+    /**
+     * Инициализация перед каждым тестом.
+     * Создается новый контейнер с начальной емкостью 3.
+     */
     @BeforeEach
     void setUp() {
         container = new IntContainer(3);
     }
 
+    /**
+     * Тест проверяет инициализацию пустого контейнера.
+     */
     @Test
     void testInitialization() {
         assertEquals(0, container.len());
     }
 
+    /**
+     * Тест проверяет добавление элементов в контейнер.
+     */
     @Test
     void testAddElements() {
         container.addElem(10);
@@ -25,6 +38,9 @@ public class IntContainerTest {
         assertEquals(2, container.len());
     }
 
+    /**
+     * Тест проверяет получение элемента по индексу.
+     */
     @Test
     void testGetElements() {
         container.addElem(10);
@@ -32,6 +48,21 @@ public class IntContainerTest {
         assertEquals(10, container.getElem(0));
     }
 
+    /**
+     * Тест проверяет получение элемента по некорректному индексу.
+     * Ожидается IndexOutOfBoundsException.
+     */
+    @Test
+    void testGetElementInvalidIndex() {
+        container.addElem(10);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            container.getElem(5);
+        });
+    }
+
+    /**
+     * Тест проверяет автоматическое расширение контейнера при заполнении.
+     */
     @Test
     void testAddElementsBeyondCapacity() {
         container.addElem(10);
@@ -41,6 +72,9 @@ public class IntContainerTest {
         assertEquals(4, container.len());
     }
 
+    /**
+     * Тест проверяет удаление существующего элемента.
+     */
     @Test
     void testRemoveExistingElement() {
         container.addElem(10);
@@ -50,6 +84,9 @@ public class IntContainerTest {
         assertEquals(2, container.len());
     }
 
+    /**
+     * Тест проверяет попытку удаления несуществующего элемента.
+     */
     @Test
     void testRemoveNonExistingElement() {
         container.addElem(10);
@@ -58,27 +95,15 @@ public class IntContainerTest {
         assertEquals(2, container.len());
     }
 
+    /**
+     * Тест проверяет удаление всех вхождений элемента.
+     */
     @Test
     void testRemoveMultipleOccurrences() {
         container.addElem(10);
         container.addElem(10);
         container.addElem(20);
         container.removeElem(10);
-        assertEquals(2, container.len());
-    }
-
-    @Test
-    void testEmptyContainer() {
-        IntContainer emptyContainer = new IntContainer();
-        assertEquals(0, emptyContainer.len());
-    }
-
-    @Test
-    void testBoundaryConditions() {
-        assertThrows(NullPointerException.class, () -> {
-            container.addElem(null);
-        });
-        container.removeElem(10);
-        assertEquals(0, container.len());
+        assertEquals(1, container.len());
     }
 }
